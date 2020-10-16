@@ -1,51 +1,73 @@
 {
-  "name": "dts-gen",
-  "version": "0.6.0",
-  "description": "TypeScript Definition File Generator",
-  "main": "bin/lib/index.js",
-  "bin": {
-    "dts-gen": "bin/lib/run.js"
-  },
-  "dependencies": {
-    "dts-dom": "latest",
-    "parse-git-config": "^1.1.1",
-    "typescript": "^3.5.1",
-    "yargs": "^4.8.1"
-  },
-  "devDependencies": {
-    "@types/mocha": "latest",
-    "@types/node": "latest",
-    "@types/parse-git-config": "^1.1.0",
-    "@types/yargs": "latest",
-    "ecurve": "1.0.5",
-    "jquery": "latest",
-    "lodash": "latest",
-    "mocha": "^3.0.2",
-    "react": "latest",
-    "tslint": "^5.1.0",
-    "webpack": "^1.13.1"
-  },
-  "keywords": [
-    "typescript"
-  ],
-  "preferGlobal": true,
-  "scripts": {
-    "test": "mocha bin/tests/test.js",
-    "build": "tsc",
-    "build-browser": "tsc -p browser && webpack",
-    "lint": "tslint --project tsconfig.json --format stylish"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Microsoft/dts-gen.git"
-  },
-  "author": "Ryan Cavanaugh <ryanca@microsoft.com> (https://www.github.com/RyanCavanaugh)",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/Microsoft/dts-gen/issues"
-  },
-  "homepage": "https://github.com/Microsoft/dts-gen#readme",
-  "engines": {
-    "node": ">=6.0.0"
-  }
+	"name": "dts-gen-lite",
+	"version": "0.6.0",
+	"description": "TypeScript Definition File Generator",
+	"main": "bin/lib/index.js",
+	"bin": {
+		"dts-gen": "bin/lib/run.js"
+	},
+	"dependencies": {
+		"dts-dom": "latest"
+	},
+	"devDependencies": {
+		"@istanbuljs/nyc-config-typescript": "^0.1.3",
+		"@types/chai": "^4.2.12",
+		"@types/mocha": "latest",
+		"@types/node": "latest",
+		"@types/parse-git-config": "^1.1.0",
+		"@types/sinon": "^7.0.13",
+		"@types/sinon-chai": "^3.2.4",
+		"@types/yargs": "latest",
+		"@typescript-eslint/eslint-plugin": "^3.9.0",
+		"@typescript-eslint/parser": "^3.9.0",
+		"chai": "^4.2.0",
+		"chai-autoload-plugins": "^0.1.0",
+		"dts-gen": "^0.6.0",
+		"ecurve": "1.0.5",
+		"eslint": "^7.6.0",
+		"jquery": "latest",
+		"lodash": "latest",
+		"mocha": "^8.1.3",
+		"nyc": "^14.1.1",
+		"parse-git-config": "^1.1.1",
+		"react": "latest",
+		"rimraf": "^2.6.3",
+		"sinon": "^7.3.2",
+		"sinon-chai": "^3.3.0",
+		"ts-mocha": "^7.0.0",
+		"ts-node": "^8.10.2",
+		"tslint": "^5.1.0",
+		"typescript": "^4.0.3",
+		"webpack": "^1.13.1",
+		"yargs": "^4.8.1",
+		"yargs-parser": "^20.2.2"
+	},
+	"keywords": [
+		"typescript"
+	],
+	"chaiAutoloadPlugins": {
+		"exclude": [
+			"@types/sinon-chai"
+		]
+	},
+	"preferGlobal": true,
+	"scripts": {
+		"test": "mocha bin/tests/test.js",
+		"build": "tsc",
+		"build-browser": "tsc -p browser && webpack",
+		"lint": "tslint --project tsconfig.json --format stylish"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/uzlopak/dts-gen-lite.git"
+	},
+	"author": "Ryan Cavanaugh <ryanca@microsoft.com> (https://www.github.com/RyanCavanaugh)",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/Microsoft/dts-gen/issues"
+	},
+	"homepage": "https://github.com/Microsoft/dts-gen#readme",
+	"engines": {
+		"node": ">=6.0.0"
+	}
 }
