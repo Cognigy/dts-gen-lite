@@ -1,20 +1,24 @@
-[![npm version](https://badge.fury.io/js/dts-gen.svg)](https://badge.fury.io/js/dts-gen)
+[![npm version](https://badge.fury.io/js/dts-gen.svg)](https://badge.fury.io/js/dts-gen-lite)
 
-# dts-gen: A TypeScript Definition File Generator
+# dts-gen-lite: A TypeScript Definition File Generator
 
-`dts-gen` is a tool that generates TypeScript definition files (.d.ts) from *any* JavaScript object.
+`dts-gen-lite` is a tool, based on `dts-gen`, that generates TypeScript definition files (.d.ts) from *any* JavaScript object.
 
-`dts-gen` works differently from TypeScript, Flowtype, Tern, etc. because it simply examines the objects as they appear at runtime, rather than needing the source code that creates the object.
+`dts-gen-lite` works differently from TypeScript, Flowtype, Tern, etc. because it simply examines the objects as they appear at runtime, rather than needing the source code that creates the object.
 This means no matter how the object was written, anything, including native objects, can be given an inferred shape.
 
 This trade-off comes with a price -- you'll see a lot of `any`s in function parameters and return types.
 You may also see properties that are not intended for public use.
 `dts-gen` is meant to be a *starting point* for writing a high-quality definition file.
 
+# dts-gen-lite vs. dts-gen
+
+`dts-gen-lite` is based on `dts-gen` and can be used as drop-in-replacement for `dts-gen` (v0.6.0). Methods which were imported from typescript are copied from typescript version 4.0.3. The main difference between dts-gen-lite and dts-gen is the parsing of function. Instead of using the Tokenizer from typescript, dts-gen-lite uses a way simpler approach by using regex.
+
 # How do I use it?
 
-`dts-gen` can operate on NPM modules, arbitrary identifiers, or arbitrary expressions.
-If you are generating a .d.ts file for a node module, the best way is to use the `dts-gen` commandline tool.
+`dts-gen-lite` can operate on NPM modules, arbitrary identifiers, or arbitrary expressions.
+If you are generating a .d.ts file for a node module, the best way is to use the `dts-gen-lite` commandline tool.
 
 Some libraries only load in browsers; for this you can use the console-launched pop-up window.
 
@@ -22,7 +26,7 @@ Some libraries only load in browsers; for this you can use the console-launched 
 
 Let's generate a .d.ts file for the `yargs` NPM module.
 This already has a handwritten definition file, but let's pretend that doesn't exist yet.
-You'll need to first install `dts-gen` if you haven't already, then globally install the module you're generating for.
+You'll need to first install `dts-gen-lite` if you haven't already, then globally install the module you're generating for.
 
 ```sh
 > npm install -g dts-gen
@@ -40,13 +44,13 @@ declare namespace yargs {
         $0: string;
 // ... more
 ```
-As you can see, `dts-gen` produced the correct module shape for the node module.
+As you can see, `dts-gen-lite` produced the correct module shape for the node module.
 The function arguments got their correct names and arity, though it didn't detect that `cwd` is optional.
 The parameter types are `any`, which is fine, and we can read the `yargs` documentation to find out what types it actually accepts.
 
 ## Command-line options
 
-Here's the commandline help you'll see when running `dts-gen`:
+Here's the commandline help you'll see when running `dts-gen-lite`:
 ```
 Usage: dts-gen input [settings] [output]
 
